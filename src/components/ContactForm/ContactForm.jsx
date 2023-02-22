@@ -9,21 +9,22 @@ import {
   ErrWrapper,
 } from './ContactForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 
 const initialsValues = {
   name: '',
-  number: '',
+  phone: '',
 };
 
 const FormSchema = yup.object().shape({
   name: yup.string().min(2).required(),
-  number: yup.string().min(13).max(13).phone('UA').required(),
+  phone: yup.string().min(13).max(13).phone('UA').required(),
 });
 
 export default function ContactForm() {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
+
   const dispatch = useDispatch();
 
   const handleSubmitForm = (values, { resetForm }) => {
@@ -53,16 +54,16 @@ export default function ContactForm() {
             </ErrWrapper>
           </InputLabel>
           <InputLabel>
-            Number
-            <Input type="tel" name="number" placeholder="+380XXXXXXXXX" />
+            Phonenumber
+            <Input type="tel" name="phone" placeholder="+380XXXXXXXXX" />
             <ErrWrapper>
-              <ErrorMessage name="number" />
+              <ErrorMessage name="phone" />
             </ErrWrapper>
           </InputLabel>
           <Button
             type="submit"
             disabled={
-              (props.values.name !== '') & (props.values.number !== '')
+              (props.values.name !== '') & (props.values.phone !== '')
                 ? false
                 : true
             }

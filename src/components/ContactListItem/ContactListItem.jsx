@@ -8,9 +8,9 @@ import {
 } from './ContactListItem.styled';
 import { TiUser, TiDelete } from 'react-icons/ti';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 
-export default function ContactListItem({ name, number, id }) {
+export default function ContactListItem({ name, phone, id }) {
   const dispatch = useDispatch();
 
   return (
@@ -20,7 +20,7 @@ export default function ContactListItem({ name, number, id }) {
         <ListItem>{name}:</ListItem>
       </Wrapper>
       <NumberWrapper>
-        <ListItem>{number}</ListItem>
+        <ListItem>{phone}</ListItem>
         <ListItemButton
           type="button"
           onClick={() => dispatch(deleteContact(id))}
@@ -34,6 +34,6 @@ export default function ContactListItem({ name, number, id }) {
 
 ContactListItem.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };

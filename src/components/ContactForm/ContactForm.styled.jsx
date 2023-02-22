@@ -44,9 +44,12 @@ export const ErrWrapper = styled.span`
 `;
 
 export const Button = styled.button`
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
   width: 150px;
+  height: 30px;
   border: 1px solid #bfbacc;
   border-radius: 5px;
   padding: 5px 10px;

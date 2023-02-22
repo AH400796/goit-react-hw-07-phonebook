@@ -24,3 +24,10 @@ export const ContactsWrapper = styled.div`
   box-shadow: 2px 3px 5px #3d3d3d;
   border-radius: 5px;
 `;
+
+export const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  padding: 20px;
+`;
